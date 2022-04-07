@@ -1,8 +1,10 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { user } from "./context/user/user.initial";
 import { testDetails } from "./context/testDetails/testDetails.initial";
 import { userReducer } from "./context/user/user.reducer";
+import { UserView } from "./context/user/user.view";
+import { TestView } from "./context/testDetails/testDetails.view";
 
 const initialState = {
   testDetails,
@@ -23,47 +25,31 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.button}>
-        <Text>
-          Age : {state.user.age}
-        </Text>
-        <Text>
-          First Name : {state.user.firstName}
-        </Text>
-        <Text>
-          Last Name : {state.user.lastName}
-        </Text>
-        <Text>
-          Score : {state.testDetails.score}
-        </Text>
-        <Text>
-          Questions : {state.testDetails.questions}
-        </Text>
-        <Text>
-          Answers : {state.testDetails.answers}
-        </Text>
+      <View>
+        <UserView />
+        <TestView />
+      </View>
+
+      <View>
         <Button
           onPress={() => dispatch({ type: "incrementAge" })}
           title="Increase Age"
+          style={styles.button}
         />
-      </View>
-      <View style={styles.button}>
         <Button
           onPress={() => dispatch({ type: "decrementAge" })}
           title="Decrease Age"
           style={styles.button}
         />
-      </View>
-      <View style={styles.button}>
         <Button
           onPress={() => dispatch({ type: "firstName", name: "Jason" })}
           title="Change first name to Jason"
+          style={styles.button}
         />
-      </View>
-      <View style={styles.button}>
         <Button
           onPress={() => dispatch({ type: "lastName", name: "Bourne" })}
           title="Change last name to Bourne"
+          style={styles.button}
         />
       </View>
     </View>
