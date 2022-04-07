@@ -1,6 +1,5 @@
 export const user = {
-  firstName: '',
-  lastName: '',
+  firstName: "Jose",
+  lastName: "Flores",
   age: 0,
-  userName: '',
 };
